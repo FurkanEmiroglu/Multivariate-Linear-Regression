@@ -1,3 +1,1 @@
-### Initialize
-
-**Example**
+An example for linear regression.
