@@ -9,13 +9,13 @@ from mpl_toolkits.mplot3d import Axes3D
 def feature_normalization(X):
     """
     Parameters:
-    X: array_like
+    X: array
     =====================
     Returns:
     X as normalized.
     =====================
     Takes the elements of X, calculates their arithmetic mean, standard deviation
-    and returns the (X - Xmean) / Deviation
+    and returns the X with normalized elements.
 
     """
     X = X.copy()
@@ -26,26 +26,42 @@ def feature_normalization(X):
 def cost_function(X, theta, y):
     """
     Parameters:
-    X: array_like
-    theta: array_like
-    y: array_like
+    X: array
+    theta: array
+    y: array
     ====================
     Returns:
     J: Scalar
-    Error: array_like
+    Error: array
     ====================
-    Takes the features matrix X, parameter matrix theta, real life value matrix y:
-    Then calculates the error, and result of the cost function.
+    Takes the features matrix X, parameter matrix theta, real life values y:
+    Then returns the error and the result of the cost function.
 
     """
     m = y.size
     error = np.dot(X, theta) - y
     J = (1 / (2 * m)) * np.dot(error.T, error)
-    # X.T.dot(X) means square in matrices.
+
+    # X.T.dot(X) means X square in matrices.
     return J, error
 
 
 def gradient_descent(X, y, theta, alpha, iterations):
+    """
+    Parameters:
+    X: array
+    y: array
+    theta: array
+    alpha: float
+    iterations: int
+    ====================
+    Returns:
+    cost_history: List
+    theta: array
+    ====================
+    Applies the gradient descent algorithm for the given arguments.
+
+    """
     cost_history = np.zeros(iterations)
     m = y.size
     for i in range(iterations):
@@ -63,17 +79,20 @@ def importdata(x):
     ====================
 
     Returns,
-    X: array_like
-    y: array_like
+    X: array
+    y: array
 
     ====================
 
-    If this program and data csv data in the same directory,
-    Give the function as an argument "name of your data" as input, and it will import your
-    CSV data to pyton.
+    Requirements:
+    The script and the csv file must be in the same directory.
 
+    ====================
+
+    Takes the csv file name as an argument and imports the data to python.
 
     """
+
     x = str(x)
     x = x + ".csv"
     data = pd.read_csv(x)
