@@ -1,5 +1,5 @@
 
-#### Implementing Multivariate Linear Regression
+### Implementing Multivariate Linear Regression
 
 This script includes implementing linear regression to a two featured problem, using gradient descent algorithm and cost function.
 
